@@ -8,7 +8,7 @@ const Login = ({
 }) => {
     const navigate = useNavigate();
 
-    function onLoginHandler(e) {
+    function loginHandler(e) {
         e.preventDefault();
 
         const formData = new FormData(e.target);
@@ -23,7 +23,7 @@ const Login = ({
     }
     return (
         <section id="login-page" className="login">
-            <form id="login-form" onSubmit={onLoginHandler}>
+            <form id="login-form" onSubmit={loginHandler}>
                 <fieldset>
                     <legend>Login Form</legend>
                     <p className="field">
