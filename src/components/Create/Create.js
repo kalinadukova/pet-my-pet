@@ -1,9 +1,13 @@
 import * as petService from '../../services/petService';
 
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+
+import { AuthContext } from '../../context/AuthContext';
 
 const Create = () => {
   const navigate = useNavigate();
+  const { userInfo } = useContext(AuthContext);
 
   function onCreatePet(e) {
     e.preventDefault();
@@ -19,8 +23,8 @@ const Create = () => {
       description,
       imageUrl,
       type
-    })
-      .then(result => navigate('/dashboard'));
+    }, userInfo.accessToken)
+      .then(result => navigate('/'));
   }
 
   return (
