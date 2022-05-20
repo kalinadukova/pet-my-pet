@@ -8,36 +8,18 @@ import MyPets from './components/MyPets';
 import Create from './components/Create';
 import Logout from "./components/Logout";
 import Edit from './components/Edit';
-import { AuthContext } from './context/AuthContext'
-import useLocalStorage from "./hooks/useLocalStorage";
-
-import * as authService from './services/authService';
 
 import { Routes, Route } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-
-const initialAuthState = {
-  _id: null,
-  accessToken: null,
-  email: null
-};
+import { AuthContextProvider } from './context/AuthContext';
 
 function App() {
-  const [userInfo, setUserInfo] = useLocalStorage('userInfo', initialAuthState);
-
-  function login(data) {
-    setUserInfo(data);
-  }
-
-  function logout() {
-    setUserInfo(initialAuthState);
-  }
 
   return (
-    <AuthContext.Provider value={{ userInfo, login, logout }}>
+    <AuthContextProvider>
       <div id="container">
 
-        <Header email={userInfo.email} />
+        <Header />
+        {/* email={userInfo.email} */}
 
         <main id="site-content">
 
@@ -58,7 +40,8 @@ function App() {
         <Footer />
 
       </div>
-    </AuthContext.Provider>
+    </AuthContextProvider>
+
   );
 }
 

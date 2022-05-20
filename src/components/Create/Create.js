@@ -1,13 +1,11 @@
 import * as petService from '../../services/petService';
 
 import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
-
-import { AuthContext } from '../../context/AuthContext';
+import { useAuthContext } from '../../context/AuthContext';
 
 const Create = () => {
   const navigate = useNavigate();
-  const { userInfo } = useContext(AuthContext);
+  const { userInfo } = useAuthContext();
 
   function onCreatePet(e) {
     e.preventDefault();

@@ -1,9 +1,8 @@
-import { AuthContext } from '../../context/AuthContext';
+import { useAuthContext } from '../../context/AuthContext';
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
 
 const Header = () => {
-    const { userInfo } = useContext(AuthContext);
+    const { userInfo } = useAuthContext();
     let guestNavigation = (
         <div id="guest">
             <Link className="button" to="/login">Login</Link>
